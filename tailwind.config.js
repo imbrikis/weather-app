@@ -17,6 +17,7 @@ module.exports = {
     }),
     maxWidth: {
       searchMobile: '236px',
+      forecastDay: '3.5rem',
     },
     extend: {
       spacing: {
