@@ -1,9 +1,12 @@
 import React from 'react'
+import CurrentWeather from './CurrentWeather'
+import Nav from './Nav'
 
 const App = () => {
   return (
     <div>
-      <h1>React and Tailwind App Template</h1>
+      <Nav />
+      <CurrentWeather />
     </div>
   )
 }
