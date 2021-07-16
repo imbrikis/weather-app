@@ -1,9 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { WeatherContext } from './App'
 import { FaSearch } from 'react-icons/fa'
 import axios from 'axios'
 
 const Search = () => {
+  const [weatherState, setWeatherState] = useContext(WeatherContext)
+
   const [text, setText] = useState('')
+
+  useEffect(async () => {
+    const { data } = await axios.get(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=45.5051&lon=-122.6750&exclude=alerts,minutely,hourly&units=imperial&appid=${process.env.REACT_APP_W_API_KEY}`
+    )
+    setWeatherState({ ...data, city: 'Portland, OR' })
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -15,20 +25,25 @@ const Search = () => {
     const processedText = text.split(' ').join('+')
     const googleUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${processedText}&key=${process.env.REACT_APP_GG_API_KEY}`
     const { data: googleData } = await axios.get(googleUrl)
+    console.log(googleData)
 
     if (googleData.results[0]?.geometry?.location) {
       const lat = googleData.results[0]?.geometry?.location.lat
       const lng = googleData.results[0]?.geometry?.location.lng
-      const weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&exclude=alerts,minutely,hourly&appid=${process.env.REACT_APP_W_API_KEY}`
+      const city = googleData.results[0]?.formatted_address
+      const weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&exclude=alerts,minutely,hourly&units=imperial&appid=${process.env.REACT_APP_W_API_KEY}`
 
       const { data: weatherData } = await axios.get(weatherUrl)
       console.log(weatherData)
+      setWeatherState({ ...weatherState, ...weatherData, city })
     } else {
       console.err('The data entered did not yield a longitude and latitude')
     }
 
     setText('')
   }
+
+  console.log(weatherState)
 
   return (
     <form

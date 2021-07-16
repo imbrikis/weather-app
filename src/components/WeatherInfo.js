@@ -1,16 +1,38 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { WeatherContext } from './App'
 import { BsChevronUp } from 'react-icons/bs'
-import rain from '../assets/rain.png'
 
 const WeatherInfo = () => {
+  const [weatherState] = useContext(WeatherContext)
+  const weatherImg =
+    `http://openweathermap.org/img/wn/${weatherState?.current?.weather[0]?.icon}@2x.png` ||
+    null
+
   return (
     <div className='mt-8'>
       <div className='mx-auto flex justify-center'>
-        <BsChevronUp className='inline-block self-center mr-2 fill-red' />
-        <span className='text-8xl'>85&#176;</span>
+        {weatherState?.current ? (
+          <BsChevronUp className='inline-block self-center mr-2 fill-red' />
+        ) : null}
+        <span className='text-8xl'>
+          {weatherState?.current
+            ? Math.round(weatherState?.current?.temp).toString() + '°'
+            : '--'}
+        </span>
       </div>
-      <p className='text-center mt-4 text-3xl'>Partly Cloudy</p>
-      <img src={rain} alt='rain cloud' className='mx-auto w-36 text-center' />
+      <p className='text-center mt-4 text-3xl'>
+        {weatherState?.current
+          ? weatherState?.current?.weather[0]?.description
+              .split(' ')
+              .map((item) => item.charAt(0).toUpperCase() + item.slice(1))
+              .join(' ')
+          : '--'}
+      </p>
+      <img
+        src={weatherImg}
+        alt='weather icon'
+        className='mx-auto w-36 text-center'
+      />
     </div>
   )
 }
