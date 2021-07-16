@@ -8,11 +8,14 @@ const Search = () => {
 
   const [text, setText] = useState('')
 
-  useEffect(async () => {
-    const { data } = await axios.get(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=45.5051&lon=-122.6750&exclude=alerts,minutely,hourly&units=imperial&appid=${process.env.REACT_APP_W_API_KEY}`
-    )
-    setWeatherState({ ...data, city: 'Portland, OR' })
+  useEffect(() => {
+    const getData = async () => {
+      const { data } = await axios.get(
+        `https://api.openweathermap.org/data/2.5/onecall?lat=45.5051&lon=-122.6750&exclude=alerts,minutely,hourly&units=imperial&appid=${process.env.REACT_APP_W_API_KEY}`
+      )
+      setWeatherState({ ...data, city: 'Portland, OR' })
+    }
+    getData()
   }, [])
 
   const handleSubmit = async (e) => {

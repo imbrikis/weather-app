@@ -72,7 +72,7 @@ const Forecast = () => {
   // ]
 
   const renderedDays = weatherState?.daily?.map((day) => {
-    return <ForecastDay {...day} />
+    return <ForecastDay key={day.dt} {...day} />
   })
 
   return (
