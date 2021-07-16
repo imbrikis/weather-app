@@ -25,7 +25,6 @@ const Search = () => {
     const processedText = text.split(' ').join('+')
     const googleUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${processedText}&key=${process.env.REACT_APP_GG_API_KEY}`
     const { data: googleData } = await axios.get(googleUrl)
-    console.log(googleData)
 
     if (googleData.results[0]?.geometry?.location) {
       const lat = googleData.results[0]?.geometry?.location.lat
@@ -34,7 +33,6 @@ const Search = () => {
       const weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&exclude=alerts,minutely,hourly&units=imperial&appid=${process.env.REACT_APP_W_API_KEY}`
 
       const { data: weatherData } = await axios.get(weatherUrl)
-      console.log(weatherData)
       setWeatherState({ ...weatherState, ...weatherData, city })
     } else {
       console.err('The data entered did not yield a longitude and latitude')
@@ -42,8 +40,6 @@ const Search = () => {
 
     setText('')
   }
-
-  console.log(weatherState)
 
   return (
     <form

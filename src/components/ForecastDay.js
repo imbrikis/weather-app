@@ -17,7 +17,6 @@ const ForecastDay = (props) => {
   ]
 
   const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-  console.log(props)
 
   const time = new Date(props.dt * 1000) || '--'
 
