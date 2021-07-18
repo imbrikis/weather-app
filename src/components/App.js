@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react'
+import Search from './Search'
 import CurrentWeather from './CurrentWeather'
 import Forecast from './Forecast'
 import Nav from './Nav'
@@ -12,6 +13,9 @@ const App = () => {
     <div>
       <WeatherContext.Provider value={[weatherState, setWeatherState]}>
         <Nav />
+        <div className='container mx-auto lg:pt-12 px-5'>
+          <Search />
+        </div>
         <div className='lg:flex lg:container lg:mx-auto lg:pt-12'>
           <CurrentWeather />
           <Forecast />

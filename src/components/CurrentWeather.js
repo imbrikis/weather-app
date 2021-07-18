@@ -5,7 +5,7 @@ import WeatherInfo from './WeatherInfo'
 
 const CurrentWeather = () => {
   return (
-    <div className='container mx-auto px-5 pt-7'>
+    <div className='container mx-auto px-5 pt-4'>
       <CityInfo />
       <WeatherInfo />
       <TempLine />

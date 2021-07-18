@@ -16,12 +16,12 @@ module.exports = {
       red: theme('colors.red'),
     }),
     maxWidth: {
-      searchMobile: '236px',
+      sm: '24rem',
       forecastDay: '3.5rem',
     },
     extend: {
       spacing: {
-        searchMobile: '236px',
+        searchMobile: '600px',
       },
     },
   },
