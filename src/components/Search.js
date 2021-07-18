@@ -45,17 +45,20 @@ const Search = () => {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className='inline-block w-searchMobile max-w-searchMobile h-7 rounded-full bg-white flex items-center justify-between relative'
-    >
-      <input
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        className='h-7 w-full rounded-full px-2'
-      />
-      <FaSearch className='fill-gray absolute right-2' />
-    </form>
+    <div className='pr-4'>
+      <form
+        onSubmit={handleSubmit}
+        className='inline-block w-searchMobile max-w-searchMobile h-7 rounded-full bg-white flex items-center justify-between relative'
+      >
+        <input
+          value={text}
+          placeholder='search city'
+          onChange={(e) => setText(e.target.value)}
+          className='h-7 w-full rounded-full px-2'
+        />
+        <FaSearch className='fill-gray absolute right-2' />
+      </form>
+    </div>
   )
 }
 

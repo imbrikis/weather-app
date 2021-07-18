@@ -12,8 +12,10 @@ const App = () => {
     <div>
       <WeatherContext.Provider value={[weatherState, setWeatherState]}>
         <Nav />
-        <CurrentWeather />
-        <Forecast />
+        <div className='lg:flex lg:container lg:mx-auto lg:pt-12'>
+          <CurrentWeather />
+          <Forecast />
+        </div>
       </WeatherContext.Provider>
     </div>
   )
