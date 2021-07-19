@@ -18,10 +18,13 @@ module.exports = {
     maxWidth: {
       sm: '24rem',
       forecastDay: '3.5rem',
+      none: 'none',
     },
     extend: {
       spacing: {
         searchMobile: '600px',
+        '1/7': '14.28%',
+        28: '7rem',
       },
     },
   },

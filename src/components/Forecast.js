@@ -79,7 +79,9 @@ const Forecast = () => {
   return (
     <div className='container mx-auto px-5 mt-8'>
       <p className='text-2xl'>8-day forecast</p>
-      <div className='flex justify-between mt-2'>{renderedDays}</div>
+      <div className='flex justify-between lg:flex-col mt-2'>
+        {renderedDays}
+      </div>
     </div>
   )
 }

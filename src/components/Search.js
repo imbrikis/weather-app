@@ -47,7 +47,7 @@ const Search = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className='container pt-4 w-full max-w-sm h-7 rounded-full bg-white flex items-center justify-between relative'
+      className='container lg:float-right w-full max-w-sm h-7 rounded-full bg-white flex items-center justify-between relative'
     >
       <input
         value={text}

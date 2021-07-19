@@ -4,7 +4,8 @@ Made with React.js and Tailwind
 
 Uses the Open Weather API
 
-Notes:
+Todo Items:
 
-- Search comp located within the Nav was a bad design choice
-- This will be moved out of the Nav, above the CurrentWeather comp
+- Display a loading icon when fetching new search query results
+- Ham Menu functionality (change to "search history" when viewed on desktop) - maybe a separate component
+- Build the temp line component
