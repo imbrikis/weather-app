@@ -12,7 +12,7 @@ const WeatherInfo = () => {
     <div className='mt-8'>
       <div className='mx-auto flex justify-center'>
         {weatherState?.current ? (
-          <BsChevronUp className='inline-block self-center mr-2 fill-red' />
+          <BsChevronUp className='inline-block self-center mr-2 fill-red hidden' />
         ) : null}
         <span className='text-8xl'>
           {weatherState?.current
